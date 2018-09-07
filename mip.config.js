@@ -41,6 +41,14 @@ module.exports = {
      *
      * @type {string}
      */
-    asset: ''
+    asset: '',
+
+    /**
+     * 是否开启线下 SF 调试环境
+     * 默认 true
+     *
+     * @type {boolean}
+     */
+    enableSF: true
   }
 }
