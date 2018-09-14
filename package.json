@@ -8,7 +8,8 @@
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .vue,.js .",
     "fix": "npm run fix:js",
-    "fix:js": "eslint --ext .vue,.js . --fix"
+    "fix:js": "eslint --ext .vue,.js . --fix",
+    "publish": "sh upload.sh $1"
   },
   "author": "wangyisheng (wangyisheng@baidu.com)",
   "dependencies": {
