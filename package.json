@@ -1,7 +1,7 @@
 {
-  "name": "dev-mip-site",
+  "name": "{{ name }}",
   "version": "0.0.1",
-  "description": "A MIP site project",
+  "description": "{{ description }}",
   "scripts": {
     "dev": "mip2 dev",
     "build": "mip2 build",
@@ -11,7 +11,7 @@
     "fix:js": "eslint --ext .vue,.js . --fix",
     "publish": "sh upload.sh $1"
   },
-  "author": "wangyisheng (wangyisheng@baidu.com)",
+  "author": "{{ author }}",
   "dependencies": {
     "got": "^9.2.0"
   },
