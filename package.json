@@ -8,8 +8,7 @@
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .vue,.js .",
     "fix": "npm run fix:js",
-    "fix:js": "eslint --ext .vue,.js . --fix",
-    "publish": "sh upload.sh $1"
+    "fix:js": "eslint --ext .vue,.js . --fix"
   },
   "author": "{{ author }}",
   "dependencies": {
@@ -24,5 +23,6 @@
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
     "eslint-plugin-vue": "^4.5.0"
-  }
+  },
+  "mipSite": true
 }

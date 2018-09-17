@@ -9,25 +9,55 @@ echo "start mip-plugin-site-template package";
 script_path=$(cd `dirname $0` && pwd)
 cd $script_path
 
+# mip-plugin-site-template 仓库地址
+DEV_MIP_SITE_URL=https://github.com/mipengine/mip-plugin-site-template.git
+# 工作目录
+compile_path=../mip-plugin-site-template_deploy
 # 输出目录
-output=../dev_mip_site_output
+output=../mip-plugin-site-template_output
 
+# 创建 compile_path
+rm -rf $compile_path && mkdir -p $compile_path
 # 创建 output
 rm -rf $output && mkdir -p $output
 
-# release url
-URL="https://github.com/mipengine/mip-plugin-site-template/archive/"$1".zip"
+cd $compile_path
 
-cd $output
-# -I show document info only -m max-time 
-res=$(curl -I -m 10 -o /dev/null -s -w '%{http_code}\n' $URL)
-
-if [[ $res == 404 ]]; then
-	#statements
-	echo "404 not found! please enter the right version number."
-	exit 1
+if [ ! -d "site" ]; then
+    # env GIT_SSL_NO_VERIFY=true /home/work/.jumbo/bin/git clone $DEV_MIP_SITE_URL site
+    git clone $DEV_MIP_SITE_URL site
 fi
 
-curl $URL -o mip-plugin-site-template.zip
+# 配置为内网镜像
+npm config set registry http://registry.npm.baidu.com
+
+# 编译 site
+cd site
+
+project_version=$1
+
+git pull origin master
+
+{
+    git checkout $project_version
+} || {
+    exit 1
+}
+
+cp -rf . ../$output/
+
+cd ../$output/
+rm 'upload.sh'
+rm -rf '.git'
+zip -r ../mip-plugin-site-template.zip . .[^.]*
+rm -rf ./* 
+mv ../mip-plugin-site-template.zip ./mip-plugin-site-template.zip
+
+# 清理工作目录
+rm -rf ../$compile_path
 
 baidu-bos ./mip-plugin-site-template.zip bos://assets/mip/templates
+
+rm -rf $output
+
+echo "end mip-plugin-site-template package";
