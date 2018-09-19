@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "description",
   "scripts": {
-    "dev": "mip2 dev",
+    "dev": "mip2 site dev",
     "build": "mip2 build",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .vue,.js .",
