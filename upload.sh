@@ -51,7 +51,8 @@ rm 'upload.sh'
 rm -rf '.git'
 
 #修改组件模板变量的三个文件
-newContent='所需脚本| {% if: {{ name }} %}{% if: {{ name }} === 'mip2-extensions' %}[https://c.mipcdn.com/static/v2/{{ compName }}/{{ compName }}.js](https://c.mipcdn.com/static/v2/{{ compName }}/{{ compName }}.js){% else %}[https://c.mipcdn.com/extensions/platform/v2/{{name}}/{{ compName }}/{{ compName }}.js](https://c.mipcdn.com/extensions/platform/v2/{{name}}/{{ compName }}/{{ compName }}.js){% /if %}{% /if %}'
+newContent='所需脚本| {% if: {{name}} %}{% if: {{name}} === "mip2-extensions" %}[https://c.mipcdn.com/static/v2/{{ compName }}/{{ compName }}.js](https://c.mipcdn.com/static/v2/{{ compName }}/{{ compName }}.js){% else %}[https://c.mipcdn.com/extensions/platform/v2/{{name}}/{{ compName }}/{{ compName }}.js](https://c.mipcdn.com/extensions/platform/v2/{{name}}/{{ compName }}/{{ compName }}.js){% /if %}{% /if %}'
+
 
 #1.mip-example.html
 sed -i '' 's/mip-example/\{\{ compName \}\}/g' mip-component/components/mip-example/example/mip-example.html
@@ -63,7 +64,7 @@ ${newContent}
 #3.package.json
 sed -i '' 's/\"name\": \"name\"/\"name\": \"\{\{ name \}\}\"/g' package.json
 sed -i '' 's/\"description\": \"description\"/\"description\": \"\{\{ description \}\}\"/g' package.json
-sed -i '' 's/\"author\": \"yourname\"/\"author\": \"\{\{ yourname \}\}\"/g' package.json
+sed -i '' 's/\"author\": \"yourname\"/\"author\": \"\{\{ author \}\}\"/g' package.json
 
 
 zip -r ../mip-plugin-site-template.zip . .[^.]*
