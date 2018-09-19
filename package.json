@@ -4,7 +4,7 @@
   "description": "description",
   "scripts": {
     "dev": "mip2 site dev",
-    "build": "mip2 build",
+    "build": "mip2 site build-component",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .vue,.js .",
     "fix": "npm run fix:js",
