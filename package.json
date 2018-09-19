@@ -1,7 +1,7 @@
 {
-  "name": "{{ name }}",
+  "name": "name",
   "version": "0.0.1",
-  "description": "{{ description }}",
+  "description": "description",
   "scripts": {
     "dev": "mip2 dev",
     "build": "mip2 build",
@@ -10,7 +10,7 @@
     "fix": "npm run fix:js",
     "fix:js": "eslint --ext .vue,.js . --fix"
   },
-  "author": "{{ author }}",
+  "author": "yourname",
   "dependencies": {
     "got": "^9.2.0"
   },
